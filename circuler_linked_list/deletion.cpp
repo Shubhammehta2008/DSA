@@ -79,4 +79,23 @@ void deleteatstart(){
     head=head->next;
     delete temp;
 }
+
+void deleteattail(){
+    if(head==nullptr){
+        cout<<"List is empty"<<endl;
+        return;
+    }
+    if(head->next==head){
+        delete head;
+        head=nullptr;
+        return;
+    }
+    node* temp=head;
+    while(temp->next->next!=head){
+        temp=temp->next;
+    }
+    node* lastnode=temp->next;
+    temp->next=head;
+    delete lastnode; 
+}
 };
