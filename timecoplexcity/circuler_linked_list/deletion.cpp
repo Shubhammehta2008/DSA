@@ -4,10 +4,10 @@ using namespace std;
         public:
         node* next;
         int val;
-    node(int data)
-    { val=data;
-      next=NULL;
-    }
+      node(int data)
+       {  val=data;
+          next=NULL;
+       }
     };
  class circularlinkedlist{
     public:
@@ -32,7 +32,9 @@ using namespace std;
         new_node->next=head;
         head=new_node;
     }
-}    void insertattail(int data){
+}  
+
+    void insertattail(int data){
         node* new_node=new node(data);
         if(head==nullptr){
             head=new_node;
@@ -57,4 +59,24 @@ using namespace std;
         } while (curr != head);
         cout << endl;
     }
+ 
+void deleteatstart(){
+    if(head==nullptr){
+        cout<<"List is empty"<<endl;
+        return;
+    }
+    if(head->next==head){
+        delete head;
+        head=nullptr;
+        return;
+    }
+    node* tail=head;
+    while(tail->next!=head){
+        tail=tail->next;
+    }
+    node* temp=head;
+    tail->next=head->next;
+    head=head->next;
+    delete temp;
+}
 };
