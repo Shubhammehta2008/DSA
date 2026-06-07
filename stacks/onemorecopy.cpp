@@ -41,6 +41,27 @@ class stack{
                 return arr[top];
             }
         }
-
+        int size ()
+        {
+            return top+1;
+        }
+ bool isempty(){
+    return top ==-1;
+ }
 
     };
+  int main(){
+    stack s(5);
+    s.push(1);
+    s.push(2);
+    s.push(3);
+    s.push(4);
+    s.push(5);
+    s.push(6);
+    cout<<"top element is "<<s.peek()<<endl;
+    cout<<"stack size is "<<s.size()<<endl;
+    cout<<"popped element is "<<s.pop()<<endl;
+    cout<<"top element is "<<s.peek()<<endl;
+    cout<<"stack size is "<<s.size()<<endl;
+    return 0;
+  }
