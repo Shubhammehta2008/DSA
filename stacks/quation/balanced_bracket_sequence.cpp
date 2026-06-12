@@ -57,6 +57,7 @@ int main(){
     else{
         cout<<"invalid"<<endl;
     }
+    longest_valid_parenthesis(s);
     return 0;
 
 }
