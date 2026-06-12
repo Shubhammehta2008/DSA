@@ -1,0 +1,66 @@
+#include <iostream>     
+#include <vector>
+#include <algorithm>
+ 
+using namespace std;
+ 
+void solve() {
+    int n, m;
+    long long k; // k की वैल्यू बहुत बड़ी हो सकती है!
+    cin >> n >> m >> k;
+ 
+    // एरे a को पढ़ना
+    vector<int> a(n);
+    for(int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+ 
+    // एरे b को पढ़ना
+    vector<int> b(m);
+    for(int i = 0; i < m; i++) {
+        cin >> b[i];
+    }
+ 
+    // आपका सिमुलेशन लॉजिक
+    long long steps_without_swap = 0;
+    long long limit = 1LL * n * m; // इतने स्टेप्स तक अगर स्वैप नहीं हुआ, तो एरे स्टेबल हो गया है
+
+    for(long long i = 0; i < k; i++) {
+        if(a[i % n] > b[i % m]) {
+            swap(a[i % n], b[i % m]);
+            steps_without_swap = 0; // स्वैप हुआ, तो काउंटर रीसेट कर दें
+        } else {
+            steps_without_swap++; // स्वैप नहीं हुआ, तो काउंटर बढ़ाएं
+        }
+
+        // अगर लगातार n*m बार कोई स्वैप नहीं हुआ, तो लूप रोक दें (Time बचाएं)
+        if(steps_without_swap >= limit) {
+            break; 
+        }
+    }
+ 
+    // एरे a को प्रिंट करना
+    for(int i = 0; i < n; i++) {
+        cout << a[i] << " ";
+    }
+    cout << "\n";
+    
+    // एरे b को प्रिंट करना
+    for(int i = 0; i < m; i++) {
+        cout << b[i] << " ";
+    }
+    cout << "\n";
+}
+ 
+int main() {
+    // इनपुट/आउटपुट ऑपरेशन्स को ऑप्टिमाइज़ करना
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+ 
+    int t;
+    cin >> t; // टेस्ट केस की संख्या पढ़ना
+    while(t--) {
+        solve();
+    }
+    return 0;
+}

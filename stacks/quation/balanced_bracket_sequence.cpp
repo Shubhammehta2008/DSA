@@ -27,6 +27,7 @@ bool is_valid(string s){
             }
         return st.empty();
     }
+    
     void longest_valid_parenthesis(string s){
         stack<int> st;
         st.push(-1);
